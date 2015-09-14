@@ -38,9 +38,6 @@
     "mocha": "^2.1.0",
     "power-assert": "^1.0.0"
   },
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "compile": "grunt compile",
     "test": "grunt test"

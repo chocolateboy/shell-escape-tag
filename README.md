@@ -1,5 +1,8 @@
 # shell-escape-tag
 
+[![npm status](http://img.shields.io/npm/v/shell-escape-tag.svg)](https://www.npmjs.org/package/shell-escape-tag)
+[![build status](https://secure.travis-ci.org/chocolateboy/shell-escape-tag.svg)](http://travis-ci.org/chocolateboy/shell-escape-tag)
+
 An ES6+ template tag which escapes parameters for interpolation into shell commands
 
 - [INSTALL](#install)
@@ -68,7 +71,7 @@ with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) a
 
 ```javascript
 let param = shell.escape(shell.preserve('foo bar'), [ "baz's quux" ])
-let command = shell `command ${param}`
+let command = shell`command ${param}`
 
 console.log(command) // command foo bar 'baz'"'"'s quux'
 ```
@@ -84,7 +87,7 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 
 ```javascript
 let param = shell.preserve(shell.escape('foo bar'), [ "baz's quux" ])
-let command = shell `command ${param}`
+let command = shell`command ${param}`
 
 console.log(command) // command 'foo bar' baz's quux
 ```
