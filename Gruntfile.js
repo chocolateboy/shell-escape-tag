@@ -8,7 +8,7 @@ module.exports = function (grunt) {
             options: {
                 sourceMaps: 'inline',
                 nonStandard: false,
-                optional: [ 'bluebirdCoroutines', 'runtime', 'strict' ],
+                optional: [ 'runtime', 'strict' ],
                 stage: 0,
             },
             src: {

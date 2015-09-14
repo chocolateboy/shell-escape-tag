@@ -1,3 +1,7 @@
+## 1.0.0
+
+* add changelog to package files
+
 ## 0.0.2
 
 * add .travis.yml
