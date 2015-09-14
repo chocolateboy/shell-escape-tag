@@ -1,6 +1,6 @@
 {
   "name": "shell-escape-tag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An ES6+ template tag which quotes parameters for interpolation into shell commands",
   "main": "target/src/shell-escape-tag.js",
   "files": [
