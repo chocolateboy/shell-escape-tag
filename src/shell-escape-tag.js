@@ -1,7 +1,8 @@
+import isArray     from 'lodash.isarray'
+import shellEscape from 'any-shell-escape'
 import zip         from 'lodash.zip'
-import shellEscape from 'any-shell-escape';
 
-import 'source-map-support/register';
+import 'source-map-support/register'
 
 /*
  * wrapper class for already escaped/preserved values.
