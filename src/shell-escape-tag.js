@@ -1,4 +1,4 @@
-import _           from 'lodash';
+import zip         from 'lodash.zip'
 import shellEscape from 'any-shell-escape';
 
 import 'source-map-support/register';
@@ -34,7 +34,7 @@ class Escaped {
 function _shellEscape (params, options = {}) {
     if (params instanceof Escaped) {
         return params.value;
-    } else if (_.isArray(params)) {
+    } else if (Array.isArray(params)) {
         let escaped = [];
 
         for (let value of params) {
@@ -58,7 +58,7 @@ function _shellEscape (params, options = {}) {
 export default function shell (strings, ...params) {
     let result = '';
 
-    for (let [ string, param ] of _.zip(strings, params)) {
+    for (let [ string, param ] of zip(strings, params)) {
         result += string + _shellEscape(param);
     }
 
