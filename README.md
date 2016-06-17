@@ -41,7 +41,7 @@ shell commands. Parameters can be strings, arrays of strings, or nested arrays o
 parameters.
 
 The exported function also provides two helper methods which respectively [escape](#escape) and [preserve](#preserve)
-their parameters and protect them from further escaping.
+their parameters and protect them from further modification.
 
 ## EXPORTS
 
