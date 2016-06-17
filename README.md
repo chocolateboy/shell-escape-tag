@@ -47,7 +47,7 @@ their parameters and protect them from further modification.
 
 ### shell (default)
 
-**Signature**: (strings: Array[string], ...params: Any) -> command: string
+**Signature**: template: string -> command: string
 
 ```javascript
 let filenames = [ 'foo bar', 'baz quux' ]
