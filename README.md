@@ -101,7 +101,7 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 
 ## VERSION
 
-1.0.0
+1.0.1
 
 ## AUTHOR
 
