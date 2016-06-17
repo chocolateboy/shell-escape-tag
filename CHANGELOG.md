@@ -1,3 +1,7 @@
+## 1.0.1
+
+Narrow the scope of the lodash import (TehShrike)
+
 ## 1.0.0
 
 * add changelog to package files
