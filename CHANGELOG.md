@@ -1,3 +1,8 @@
+## 1.0.2
+
+Reinstate lodash.isArray for backwards compatibility
+Doc tweaks
+
 ## 1.0.1
 
 Narrow the scope of the lodash import (TehShrike)
