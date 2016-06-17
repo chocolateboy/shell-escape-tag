@@ -70,10 +70,10 @@ with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) a
 **Signature**: ...Any -> Object
 
 ```javascript
-let param = shell.escape(shell.preserve('foo bar'), [ "baz's quux" ])
+let param = shell.escape([ "baz's quux" ])
 let command = shell`command ${param}`
 
-console.log(command) // command foo bar 'baz'"'"'s quux'
+console.log(command) // command 'baz'"'"'s quux'
 ```
 
 Flattens and escapes any parameters which haven't already been escaped or preserved, and returns an object which
@@ -86,10 +86,10 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 **Signature**: ...Any -> Object
 
 ```javascript
-let param = shell.preserve(shell.escape('foo bar'), [ "baz's quux" ])
+let param = shell.preserve([ "baz's quux" ])
 let command = shell`command ${param}`
 
-console.log(command) // command 'foo bar' baz's quux
+console.log(command) // command baz's quux
 ```
 
 Flattens and preserves any parameters which haven't already been escaped or preserved, and returns an object which
