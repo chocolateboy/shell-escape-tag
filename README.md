@@ -20,7 +20,7 @@ An ES6+ template tag which escapes parameters for interpolation into shell comma
 
 ## INSTALL
 
-    npm install shell-escape-tag
+    $ npm install shell-escape-tag
 
 ## SYNOPSIS
 
@@ -41,13 +41,13 @@ shell commands. Parameters can be strings, arrays of strings, or nested arrays o
 parameters.
 
 The exported function also provides two helper methods which respectively [escape](#escape) and [preserve](#preserve)
-their parameters and protect them from further modification.
+their parameters and protect them from further processing.
 
 ## EXPORTS
 
 ### shell (default)
 
-**Signature**: template: string -> command: string
+**Signature**: template: string → command: string
 
 ```javascript
 let filenames = [ 'foo bar', 'baz quux' ]
@@ -57,7 +57,7 @@ let command   = shell`command --title ${title} ${filenames}`
 console.log(command) // command --title 'My Title' 'foo bar' 'baz quux'
 ```
 
-Takes a [template string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)
+Takes a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 and escapes any interpolated parameters. `null` and `undefined` values are ignored
 (i.e. mapped to an empty string). Arrays are flattened and their members are escaped and joined with a space.
 All other values are stringified i.e. `false` is mapped to `"false"` &c.. Parameters that have been escaped
@@ -67,7 +67,7 @@ with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) a
 
 ##### escape
 
-**Signature**: ...Any -> Object
+**Signature**: ...any → Object
 
 ```javascript
 let param = shell.escape([ "baz's quux" ])
@@ -83,7 +83,7 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 
 **Aliases**: protect, verbatim
 
-**Signature**: ...Any -> Object
+**Signature**: ...any → Object
 
 ```javascript
 let param = shell.preserve([ "baz's quux" ])
@@ -109,7 +109,7 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 
 ## COPYRIGHT AND LICENSE
 
-Copyright © 2015 by chocolateboy
+Copyright © 2015-2016 by chocolateboy
 
 shell-escape-tag is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
