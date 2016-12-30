@@ -5,6 +5,7 @@
 * changelog:
   * add timestamps
   * fix formatting
+* re-remove lodash.isarray (thanks, TehShrike)
 * doc tweaks
 
 ## 1.0.2 - 2016-06-17 07:13:48

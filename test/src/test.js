@@ -1,8 +1,7 @@
+import 'source-map-support/register'
 import assert      from 'power-assert'
 import shell       from '../../src/shell-escape-tag.js'
 import { inspect } from 'util'
-
-import 'source-map-support/register'
 
 describe('shell', () => {
     it('escapes an empty string', () => {

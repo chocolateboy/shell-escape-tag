@@ -1,9 +1,7 @@
+import 'source-map-support/register'
 import shellEscape from 'any-shell-escape'
 import flattenDeep from 'lodash.flattendeep'
-import isArray     from 'lodash.isarray'
 import zip         from 'lodash.zip'
-
-import 'source-map-support/register'
 
 /*
  * wrapper class for already escaped/preserved values.
@@ -40,15 +38,14 @@ function _shellEscape (params, options = {}) {
     return flattened.join(' ')
 }
 
-// low-level (recursive) shell-escape implementation for each node.
-// returns a leaf node (string) or a possibly-empty array of
-// arrays/leaf nodes. the return value is then flattened and
-// stringified by _shellEscape
+// the (recursive) guts of _shellEscape. returns a leaf node (string)
+// or a possibly-empty array of arrays/leaf nodes. prunes
+// null and undefined by returning empty arrays
 function __shellEscape (params, options) {
     if (params instanceof Escaped) {
         return params.value
     } else if (Array.isArray(params)) {
-        return params.map(it => __shellEscape(it, options))
+        return params.map(param => __shellEscape(param, options))
     } else if (params == null) {
         return []
     } else {
