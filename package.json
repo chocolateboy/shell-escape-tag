@@ -26,6 +26,7 @@
   "dependencies": {
     "any-shell-escape": "^0.1.1",
     "babel-runtime": "^5.8.3",
+    "lodash.flattendeep": "^4.4.0",
     "lodash.isarray": "^4.0.0",
     "lodash.zip": "^4.0.0",
     "source-map-support": "^0.3.2"

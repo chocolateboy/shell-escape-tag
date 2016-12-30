@@ -58,8 +58,8 @@ console.log(command) // command --title 'My Title' 'foo bar' 'baz quux'
 ```
 
 Takes a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-and escapes any interpolated parameters. `null` and `undefined` values are ignored
-(i.e. mapped to an empty string). Arrays are flattened and their members are escaped and joined with a space.
+and escapes any interpolated parameters. `null` and `undefined` values are ignored.
+Arrays are flattened and their members are escaped and joined with a space.
 All other values are stringified i.e. `false` is mapped to `"false"` &c.. Parameters that have been escaped
 with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 
