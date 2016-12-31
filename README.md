@@ -50,11 +50,11 @@ their parameters and protect them from further processing.
 **Signature**: template: String → command: String
 
 ```javascript
-let filenames = [ 'foo bar', 'baz quux' ]
+let filenames = [ 'foo bar', "baz's quux" ]
 let title     = 'My Title'
 let command   = shell`command --title ${title} ${filenames}`
 
-console.log(command) // command --title 'My Title' 'foo bar' 'baz quux'
+console.log(command) // command --title 'My Title' 'foo bar' 'baz'"'"'s quux'
 ```
 
 Takes a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
