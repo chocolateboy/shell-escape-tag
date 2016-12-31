@@ -17,20 +17,21 @@ class Escaped {
         return this.value
     }
 
-    // for console.log
+    // for console.log &c.
     inspect () {
         return this.toString()
     }
 }
 
 /*
- * escape/preserve a single value or an array of values
+ * performs the following mappings on the supplied value(s):
  *
  * - already-escaped/preserved values are passed through verbatim
- * - arrays are flattened and their members are escaped/preserved
  * - null and undefined are ignored (i.e. mapped to empty arrays,
  *   which are pruned by flatten)
  * - non-strings are stringified e.g. false -> "false"
+ *
+ * then flattens the resulting array and returns its elements joined by a space
  */
 function _shellEscape (params, options = {}) {
     let escaped = [ __shellEscape(params, options) ]
@@ -38,9 +39,11 @@ function _shellEscape (params, options = {}) {
     return flattened.join(' ')
 }
 
-// the (recursive) guts of _shellEscape. returns a leaf node (string)
-// or a possibly-empty array of arrays/leaf nodes. prunes
-// null and undefined by returning empty arrays
+/*
+ * the (recursive) guts of _shellEscape. returns a leaf node (string)
+ * or a possibly-empty array of arrays/leaf nodes. prunes
+ * null and undefined by returning empty arrays
+ */
 function __shellEscape (params, options) {
     if (params instanceof Escaped) {
         return params.value

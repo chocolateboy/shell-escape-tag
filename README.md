@@ -47,7 +47,7 @@ their parameters and protect them from further processing.
 
 ### shell (default)
 
-**Signature**: template: string → command: string
+**Signature**: template: String → command: String
 
 ```javascript
 let filenames = [ 'foo bar', 'baz quux' ]
@@ -70,14 +70,18 @@ with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) a
 **Signature**: ...any → Object
 
 ```javascript
-let param = shell.escape([ "baz's quux" ])
-let command = shell`command ${param}`
+let params   = [ 'foo bar', "baz's quux" ]
+let command1 = shell.escape('command', params)
+let command2 = shell`command ${params}`
 
-console.log(command) // command 'baz'"'"'s quux'
+console.log(command1) // command 'foo bar' 'baz'"'"'s quux'
+console.log(command2) // command 'foo bar' 'baz'"'"'s quux'
 ```
 
-Flattens and escapes any parameters which haven't already been escaped or preserved, and returns an object which
-is passed through verbatim when passed as a direct or nested parameter to the [`shell`](#shell-default) function.
+Flattens and escapes any parameters which haven't already been escaped or preserved,
+and returns an object which is passed through verbatim when passed as a direct or
+nested parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
+or [`shell.preserve`](#preserve).
 
 ##### preserve
 
@@ -86,14 +90,18 @@ is passed through verbatim when passed as a direct or nested parameter to the [`
 **Signature**: ...any → Object
 
 ```javascript
-let param = shell.preserve([ "baz's quux" ])
-let command = shell`command ${param}`
+let params   = [ 'foo bar', shell.preserve("baz's quux") ]
+let command1 = shell.escape('command', params)
+let command2 = shell`command ${params}`
 
-console.log(command) // command baz's quux
+console.log(command1) // command 'foo bar' baz's quux
+console.log(command2) // command 'foo bar' baz's quux
 ```
 
-Flattens and preserves any parameters which haven't already been escaped or preserved, and returns an object which
-is passed through verbatim when passed as a direct or nested parameter to the [`shell`](#shell-default) function.
+Flattens and preserves any parameters which haven't already been escaped or preserved,
+and returns an object which is passed through verbatim when passed as a direct or nested
+parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
+or [`shell.preserve`](#preserve).
 
 ## SEE ALSO
 
