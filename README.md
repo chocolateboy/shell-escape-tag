@@ -31,7 +31,7 @@ let filenames = glob('Holiday Snaps/*.jpg')
 let title     = 'Holiday Snaps'
 let command   = shell`compress --title ${title} ${filenames}`
 
-console.log(command) // compress --title 'Holiday Snaps' 'Holiday Snaps/Picture 1.jpg' 'Holiday Snaps/Picture 2.jpg'
+console.log(command) // compress --title 'Holiday Snaps' 'Holiday Snaps/Pic 1.jpg' 'Holiday Snaps/Pic 2.jpg'
 ```
 
 ## DESCRIPTION
