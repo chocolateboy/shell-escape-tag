@@ -78,10 +78,25 @@ console.log(command1) // command 'foo bar' 'baz'"'"'s quux'
 console.log(command2) // command 'foo bar' 'baz'"'"'s quux'
 ```
 
-Flattens and escapes any parameters which haven't already been escaped or preserved,
-and returns an object which is passed through verbatim when passed as a direct or
-nested parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
+Flattens, compacts and escapes any parameters which haven't
+already been escaped or preserved, joins the resulting elements
+with a space, and wraps the resulting string in an object which
+is passed through verbatim when passed as a direct or nested
+parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
 or [`shell.preserve`](#preserve).
+
+This method provides an alternate interface to the
+[`shell`](#shell-default) tagged-template function i.e.
+
+```javascript
+shell`foo ${bar} baz ${quux}`
+```
+
+is equivalent to:
+
+```javascript
+shell.escape('foo', bar, 'baz', quux)
+```
 
 ##### preserve
 
@@ -98,10 +113,12 @@ console.log(command1) // command 'foo bar' baz's quux
 console.log(command2) // command 'foo bar' baz's quux
 ```
 
-Flattens and preserves any parameters which haven't already been escaped or preserved,
-and returns an object which is passed through verbatim when passed as a direct or nested
-parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
-or [`shell.preserve`](#preserve).
+Flattens, compacts and preserves any parameters which haven't already
+been escaped or preserved, joins the resulting elements with a space,
+and wraps the resulting string in an object which is passed through
+verbatim when passed as a direct or nested parameter to
+[`shell`](#shell-default), [`shell.escape`](#escape), or
+[`shell.preserve`](#preserve).
 
 ## SEE ALSO
 
