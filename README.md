@@ -10,7 +10,7 @@ An ES6+ template tag which escapes parameters for interpolation into shell comma
 - [DESCRIPTION](#description)
 - [EXPORTS](#exports)
   - [shell (default)](#shell-default)
-    - [Methods](#methods)
+    - [Functions](#functions)
       - [escape](#escape)
       - [preserve](#preserve)
 - [SEE ALSO](#see-also)
@@ -40,7 +40,7 @@ This module exports an ES6+ tagged-template function which escapes (i.e. quotes)
 shell commands. Parameters can be strings, arrays of strings, or nested arrays of strings, arrays and already-processed
 parameters.
 
-The exported function also provides two helper methods which respectively [escape](#escape) and [preserve](#preserve)
+The exported function also provides two helper functions which respectively [escape](#escape) and [preserve](#preserve)
 their parameters and protect them from further processing.
 
 ## EXPORTS
@@ -63,7 +63,7 @@ Arrays are flattened and their members are escaped and joined with a space.
 All other values are stringified i.e. `false` is mapped to `"false"` &c.. Parameters that have been escaped
 with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 
-#### Methods
+#### Functions
 
 ##### escape
 
@@ -85,7 +85,7 @@ is passed through verbatim when passed as a direct or nested
 parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
 or [`shell.preserve`](#preserve).
 
-This method provides an alternate interface to the
+This function provides an alternate interface to the
 [`shell`](#shell-default) tagged-template function i.e.
 
 ```javascript
