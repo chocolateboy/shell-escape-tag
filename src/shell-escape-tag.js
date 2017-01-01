@@ -71,8 +71,8 @@ export default function shell (strings, ...params) {
 }
 
 /*
- * helper method which escapes embedded/nested strings/arrays and
- * prevents them being escaped again
+ * helper method which escapes its parameters and prevents them
+ * from being re-escaped
  */
 shell.escape = function escape (...params) {
     return new Escaped(_shellEscape(params, { verbatim: false }))

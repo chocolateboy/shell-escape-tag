@@ -89,13 +89,13 @@ This method provides an alternate interface to the
 [`shell`](#shell-default) tagged-template function i.e.
 
 ```javascript
-shell`foo ${bar} baz ${quux}`
+shell.escape('foo', bar, 'baz', quux)
 ```
 
 is equivalent to:
 
 ```javascript
-shell.escape('foo', bar, 'baz', quux)
+shell`foo ${bar} baz ${quux}`
 ```
 
 ##### preserve
