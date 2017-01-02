@@ -71,7 +71,7 @@ export default function shell (strings, ...params) {
 }
 
 /*
- * helper method which escapes its parameters and prevents them
+ * helper function which escapes its parameters and prevents them
  * from being re-escaped
  */
 shell.escape = function escape (...params) {
@@ -79,7 +79,7 @@ shell.escape = function escape (...params) {
 }
 
 /*
- * helper method which protects its parameters from being escaped
+ * helper function which protects its parameters from being escaped
  */
 shell.preserve = function verbatim (...params) {
     return new Escaped(_shellEscape(params, { verbatim: true }))
