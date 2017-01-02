@@ -3,7 +3,7 @@
 [![npm status](http://img.shields.io/npm/v/shell-escape-tag.svg)](https://www.npmjs.org/package/shell-escape-tag)
 [![build status](https://secure.travis-ci.org/chocolateboy/shell-escape-tag.svg)](http://travis-ci.org/chocolateboy/shell-escape-tag)
 
-An ES6+ template tag which escapes parameters for interpolation into shell commands
+An ES6 template tag which escapes parameters for interpolation into shell commands
 
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
@@ -36,7 +36,7 @@ console.log(command) // compress --title 'Holiday Snaps' 'Holiday Snaps/Pic 1.jp
 
 ## DESCRIPTION
 
-This module exports an ES6+ tagged-template function which escapes (i.e. quotes) its parameters for safe inclusion in
+This module exports an ES6 tagged-template function which escapes (i.e. quotes) its parameters for safe inclusion in
 shell commands. Parameters can be strings, arrays of strings, or nested arrays of strings, arrays and already-processed
 parameters.
 
@@ -122,8 +122,9 @@ verbatim when passed as a direct or nested parameter to
 
 ## SEE ALSO
 
-* [any-shell-escape](https://www.npmjs.com/package/any-shell-escape)
-* [shell-tag](https://www.npmjs.com/package/shell-tag)
+* [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
+* [execa](https://www.npmjs.com/package/execa) - A better `child_process`
+* [shell-tag](https://www.npmjs.com/package/shell-tag) - Run shell commands inline in JavaScript with ES6 template strings
 
 ## VERSION
 
