@@ -1,9 +1,9 @@
 'use strict'
 
-const del   = require('del')
-const gulp  = require('gulp')
-const babel = require('gulp-babel')
-const mocha = require('gulp-mocha')
+import del   from 'del'
+import gulp  from 'gulp'
+import babel from 'gulp-babel'
+import mocha from 'gulp-mocha'
 
 const TARGET_DIR = 'target'
 
