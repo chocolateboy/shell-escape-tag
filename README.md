@@ -123,6 +123,7 @@ verbatim when passed as a direct or nested parameter to
 ## SEE ALSO
 
 * [any-shell-escape](https://www.npmjs.com/package/any-shell-escape)
+* [shell-tag](https://www.npmjs.com/package/shell-tag)
 
 ## VERSION
 
