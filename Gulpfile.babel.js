@@ -3,30 +3,32 @@
 import del   from 'del'
 import gulp  from 'gulp'
 import babel from 'gulp-babel'
+import since from 'gulp-changed'
 import mocha from 'gulp-mocha'
 
-const TARGET_DIR = 'target'
+const DEST = 'target'
 
-const paths = {
+const SRC = {
     src:  'src/**/*.js',
     test: 'test/src/**/*.js',
 }
 
-for (let [ name, path ] of Object.entries(paths)) {
+for (let [ name, path ] of Object.entries(SRC)) {
     gulp.task(`compile:${name}`, () => {
         return gulp
             .src(path, { base: '.' })
+            .pipe(since(DEST))
             .pipe(babel())
-            .pipe(gulp.dest(TARGET_DIR))
+            .pipe(gulp.dest(DEST))
     })
 }
 
 gulp.task('mocha', () => {
-    return gulp.src(`${TARGET_DIR}/${paths.test}`, { read: false })
+    return gulp.src(`${DEST}/${SRC.test}`, { read: false })
         .pipe(mocha())
 })
 
-gulp.task('clean', () => del(TARGET_DIR))
+gulp.task('clean', () => del(DEST))
 
 gulp.task('compile', gulp.parallel('compile:src', 'compile:test'))
 gulp.task('test', gulp.series('compile', 'mocha'))
