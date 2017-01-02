@@ -15,7 +15,7 @@
 
 ## 1.0.2 - 2016-06-17 07:13:48
 
-* reinstate `lodash.isArray` for backwards compatibility
+* reinstate lodash.isarray for backwards compatibility
 * doc tweaks
 
 ## 1.0.1 - 2016-06-17 04:47:24
