@@ -126,7 +126,7 @@ verbatim when passed as a direct or nested parameter to
 
 ## VERSION
 
-1.0.2
+1.1.0
 
 ## AUTHOR
 

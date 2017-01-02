@@ -1,12 +1,17 @@
-## 1.1.0 - 2016-12-30 02:55:10
+## 1.1.0 - 2017-01-02 02:10:17
 
-* make the distinction between null/undefined (pruned) and "" (preserved) clearer
-  * add tests
+* build:
+  * migrate Babel 5 to Babel 6
+  * migrate Grunt to Gulp 4
+  * migrate npm to yarn + lockfile
+  * update dependencies
+* code:
+  * add additional tests for null/undefined pruning
+  * re-remove lodash.isarray (thanks, TehShrike)
+* documentation tweaks
 * changelog:
   * add timestamps
   * fix formatting
-* re-remove lodash.isarray (thanks, TehShrike)
-* doc tweaks
 
 ## 1.0.2 - 2016-06-17 07:13:48
 
