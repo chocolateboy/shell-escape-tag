@@ -1,18 +1,24 @@
-import del   from 'del'
+import rm    from 'del'
 import gulp  from 'gulp'
 import babel from 'gulp-babel'
 import since from 'gulp-changed'
 import mocha from 'gulp-mocha'
 
+const SRC = { src: 'src/**/*.js', test: 'test/src/**/*.js' }
 const DEST = 'target'
+const COMPILE_TASKS = []
 
-const SRC = {
-    src:  'src/**/*.js',
-    test: 'test/src/**/*.js',
+function runMocha () {
+    return gulp.src(`${DEST}/${SRC.test}`, { read: false })
+        .pipe(mocha())
 }
 
 for (let [ name, path ] of Object.entries(SRC)) {
-    gulp.task(`compile:${name}`, () => {
+    let task = `compile:${name}`
+
+    COMPILE_TASKS.push(task)
+
+    gulp.task(task, () => {
         return gulp
             .src(path, { base: '.' })
             .pipe(since(DEST))
@@ -21,13 +27,7 @@ for (let [ name, path ] of Object.entries(SRC)) {
     })
 }
 
-gulp.task('mocha', () => {
-    return gulp.src(`${DEST}/${SRC.test}`, { read: false })
-        .pipe(mocha())
-})
-
-gulp.task('clean', () => del(DEST))
-
-gulp.task('compile', gulp.parallel('compile:src', 'compile:test'))
-gulp.task('test', gulp.series('compile', 'mocha'))
+gulp.task('clean', () => rm(DEST))
+gulp.task('compile', gulp.parallel(...COMPILE_TASKS))
+gulp.task('test', gulp.series('compile', runMocha))
 gulp.task('default', gulp.task('test'))
