@@ -4,6 +4,7 @@
         "es2015"
     ],
     "plugins": [
+        "espower",
         "transform-runtime"
     ]
 }
