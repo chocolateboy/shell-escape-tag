@@ -4,9 +4,6 @@
   "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
   "main": "target/src/shell-escape-tag.js",
   "files": [
-    "package.json",
-    "CHANGELOG.md",
-    "README.md",
     "target/src/shell-escape-tag.js"
   ],
   "keywords": [
