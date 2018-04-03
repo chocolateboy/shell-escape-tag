@@ -136,7 +136,7 @@ verbatim when passed as a direct or nested parameter to
 
 ## COPYRIGHT AND LICENSE
 
-Copyright © 2015-2017 by chocolateboy
+Copyright © 2015-2018 by chocolateboy.
 
 shell-escape-tag is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
