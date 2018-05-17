@@ -1,7 +1,6 @@
-import 'source-map-support/register'
 import shellEscape from 'any-shell-escape'
-import flattenDeep from 'lodash.flattendeep'
-import zip         from 'lodash.zip'
+import INSPECT     from 'inspect-custom-symbol'
+import _           from 'lodash'
 
 /*
  * wrapper class for already escaped/preserved values.
@@ -17,9 +16,9 @@ class Escaped {
         return this.value
     }
 
-    // for console.log &c.
-    inspect () {
-        return this.toString()
+    // for console.log etc.
+    [INSPECT] () {
+        return this.value
     }
 }
 
@@ -35,7 +34,7 @@ class Escaped {
  */
 function _shellEscape (params, options = {}) {
     let escaped = [ __shellEscape(params, options) ]
-    let flattened = flattenDeep(escaped)
+    let flattened = _.flattenDeep(escaped)
     return flattened.join(' ')
 }
 
@@ -60,10 +59,10 @@ function __shellEscape (params, options) {
  * escapes embedded string/array template parameters and passes
  * through already escaped/preserved parameters verbatim
  */
-export default function shell (strings, ...params) {
+function shell (strings, ...params) {
     let result = ''
 
-    for (let [ string, param ] of zip(strings, params)) {
+    for (let [ string, param ] of _.zip(strings, params)) {
         result += string + _shellEscape(param)
     }
 
@@ -86,3 +85,6 @@ shell.preserve = function verbatim (...params) {
 }
 
 shell.protect = shell.verbatim = shell.preserve
+
+module.exports = shell
+module.exports.default = module.exports
