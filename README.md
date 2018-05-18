@@ -93,19 +93,6 @@ is passed through verbatim when passed as a direct or nested
 parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
 or [`shell.preserve`](#preserve).
 
-This function provides an alternate interface to the
-[`shell`](#shell-default) tagged-template function i.e.
-
-```javascript
-shell.escape('foo', bar, 'baz', quux)
-```
-
-is equivalent to:
-
-```javascript
-shell`foo ${bar} baz ${quux}`
-```
-
 #### preserve
 
 **Aliases**: protect, verbatim
