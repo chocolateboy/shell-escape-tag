@@ -1,7 +1,7 @@
 {
   "name": "shell-escape-tag",
   "author": "chocolateboy",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
   "repository": "chocolateboy/shell-escape-tag.js",
   "license": "Artistic-2.0",
