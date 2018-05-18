@@ -1,7 +1,7 @@
 {
   "name": "shell-escape-tag",
   "author": "chocolateboy",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
   "repository": "chocolateboy/shell-escape-tag.js",
   "license": "Artistic-2.0",
@@ -14,12 +14,13 @@
     "test": "gulp && ava --verbose"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/runtime": "^7.0.0-beta.47",
     "any-shell-escape": "^0.1.1",
+    "@babel/runtime": "^7.0.0-beta.47",
+    "inspect-custom-symbol": "^1.1.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.47",
     "@babel/preset-env": "^7.0.0-beta.47",
     "ava": "1.0.0-beta.4",
@@ -38,7 +39,6 @@
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-changed": "^3.2.0",
     "gulp-eslint": "^4.0.2",
-    "inspect-custom-symbol": "^1.1.0",
     "source-map-support": "0.5.6"
   },
   "keywords": [
