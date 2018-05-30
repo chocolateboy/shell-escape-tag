@@ -7,7 +7,7 @@
 - code:
 
   - allow (but don't require) the module to be required without
-    the unsightly .default indirection i.e. both of these now work:
+    the unsightly .default detour i.e. both of these now work:
     - require("shell-escape-tag").default
     - require("shell-escape-tag")
   - fix warning in node v6.6.0 and above by using
