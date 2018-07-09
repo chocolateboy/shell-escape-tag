@@ -141,7 +141,6 @@ The following Gulp tasks are available:
 
 * [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
 * [execa](https://www.npmjs.com/package/execa) - A better `child_process`
-* [shell-tag](https://www.npmjs.com/package/shell-tag) - Run shell commands inline in JavaScript with ES6 template strings
 
 # VERSION
 
