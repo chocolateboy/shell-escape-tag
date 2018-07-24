@@ -141,6 +141,8 @@ The following Gulp tasks are available:
 
 * [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
 * [execa](https://www.npmjs.com/package/execa) - A better `child_process`
+* [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
+* [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
 
 # VERSION
 
