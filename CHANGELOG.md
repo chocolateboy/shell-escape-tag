@@ -1,4 +1,4 @@
-## 1.2.2 - TBD
+## 1.2.2 - 2018-08-21
 
 - doc tweaks
 - update dependencies
