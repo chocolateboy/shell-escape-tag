@@ -14,32 +14,32 @@
     "test": "gulp && ava --verbose"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.54",
+    "@babel/runtime": "^7.0.0-rc.1",
     "any-shell-escape": "^0.1.1",
     "inspect-custom-symbol": "^1.1.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.54",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.54",
-    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-transform-runtime": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
     "ava": "1.0.0-beta.4",
     "babel-eslint": "^8.2.6",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-source-map-support": "^2.0.1",
     "cross-env": "^5.2.0",
     "del": "^3.0.0",
-    "eslint": "^5.2.0",
+    "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-changed": "^3.2.0",
     "gulp-eslint": "^5.0.0",
-    "source-map-support": "0.5.6"
+    "source-map-support": "0.5.9"
   },
   "keywords": [
     "es6",

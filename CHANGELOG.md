@@ -1,3 +1,8 @@
+## 1.2.2 - TBD
+
+- doc tweaks
+- update dependencies
+
 ## 1.2.1 - 2018-05-18
 
 - fix documentation error
