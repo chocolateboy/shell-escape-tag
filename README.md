@@ -58,7 +58,9 @@ their parameters and protect them from further processing.
 **Signature**: template: string → command: string
 
 ```javascript
-let filenames = [ 'foo bar', "baz's quux" ]
+import shell from 'shell-escape-tag'
+
+let filenames = ['foo bar', "baz's quux"]
 let title     = 'My Title'
 let command   = shell`command --title ${title} ${filenames}`
 
@@ -78,7 +80,9 @@ with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) a
 **Signature**: ...any → Object
 
 ```javascript
-let params   = [ 'foo bar', "baz's quux" ]
+import shell from 'shell-escape-tag'
+
+let params   = ['foo bar', "baz's quux"]
 let command1 = shell.escape('command', params)
 let command2 = shell`command ${params}`
 
@@ -100,7 +104,9 @@ or [`shell.preserve`](#preserve).
 **Signature**: ...any → Object
 
 ```javascript
-let params   = [ 'foo bar', shell.preserve("baz's quux") ]
+import shell from 'shell-escape-tag'
+
+let params   = ['foo bar', shell.preserve("baz's quux")]
 let command1 = shell.escape('command', params)
 let command2 = shell`command ${params}`
 
@@ -143,6 +149,7 @@ The following Gulp tasks are available:
 * [execa](https://www.npmjs.com/package/execa) - A better `child_process`
 * [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
 * [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
+* [@ygor/shell](https://www.npmjs.com/package/@ygor/shell) - A no-frills shell template tag
 
 # VERSION
 
