@@ -5,8 +5,7 @@
 
 An ES6 template tag which escapes parameters for interpolation into shell commands
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- toc -->
 
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
@@ -19,12 +18,13 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 - [DEVELOPMENT](#development)
   - [NPM Scripts](#npm-scripts)
   - [Gulp Tasks](#gulp-tasks)
+- [COMPATIBILITY](#compatibility)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- tocstop -->
 
 # INSTALL
 
@@ -35,91 +35,92 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 ```javascript
 import shell from 'shell-escape-tag'
 
-let filenames = glob('Holiday Snaps/*.jpg')
-let title     = 'Holiday Snaps'
-let command   = shell`compress --title ${title} ${filenames}`
+const filenames = glob('Holiday Snaps/*.jpg')
+const title     = 'Holiday Snaps'
+const command   = shell`compress --title ${title} ${filenames}`
 
 console.log(command) // compress --title 'Holiday Snaps' 'Holiday Snaps/Pic 1.jpg' 'Holiday Snaps/Pic 2.jpg'
 ```
 
 # DESCRIPTION
 
-This module exports an ES6 tagged-template function which escapes (i.e. quotes) its parameters for safe inclusion in
-shell commands. Parameters can be strings, arrays of strings, or nested arrays of strings, arrays and already-processed
+This module exports an ES6 tagged-template function which escapes (i.e. quotes)
+its parameters for safe inclusion in shell commands. Parameters can be strings,
+arrays of strings, or nested arrays of strings, arrays and already-processed
 parameters.
 
-The exported function also provides two helper functions which respectively [escape](#escape) and [preserve](#preserve)
-their parameters and protect them from further processing.
+The exported function also provides two helper functions which respectively
+[escape](#escape) and [preserve](#preserve) their parameters and protect them
+from further processing.
 
 # EXPORTS
 
 ## shell (default)
 
-**Signature**: template: string → command: string
+**Signature**: (template: string) ⇒ string
 
 ```javascript
 import shell from 'shell-escape-tag'
 
-let filenames = ['foo bar', "baz's quux"]
-let title     = 'My Title'
-let command   = shell`command --title ${title} ${filenames}`
+const filenames = ['foo bar', "baz's quux"]
+const title     = 'My Title'
+const command   = shell`command --title ${title} ${filenames}`
 
 console.log(command) // command --title 'My Title' 'foo bar' 'baz'"'"'s quux'
 ```
 
 Takes a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-and escapes any interpolated parameters. `null` and `undefined` values are ignored.
-Arrays are flattened and their elements are escaped and joined with a space.
-All other values are stringified i.e. `false` is mapped to `"false"` etc. Parameters that have been escaped
-with [`shell.escape`](#escape) or preserved with [`shell.preserve`](#preserve) are passed through verbatim.
+and escapes any interpolated parameters. `null` and `undefined` values are
+ignored. Arrays are flattened and their elements are escaped and joined with a
+space. All other values are stringified i.e. `false` is mapped to `"false"`
+etc. Parameters that have been escaped with [`shell.escape`](#escape) or
+preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 
 ### Functions
 
 #### escape
 
-**Signature**: ...any → Object
+**Signature**: (...args: any[]) ⇒ object
 
 ```javascript
 import shell from 'shell-escape-tag'
 
-let params   = ['foo bar', "baz's quux"]
-let command1 = shell.escape('command', params)
-let command2 = shell`command ${params}`
+const params   = ['foo bar', "baz's quux"]
+const command1 = shell.escape('command', params)
+const command2 = shell`command ${params}`
 
 console.log(command1) // command 'foo bar' 'baz'"'"'s quux'
 console.log(command2) // command 'foo bar' 'baz'"'"'s quux'
 ```
 
-Flattens, compacts and escapes any parameters which haven't
-already been escaped or preserved, joins the resulting elements
-with a space, and wraps the resulting string in an object which
-is passed through verbatim when passed as a direct or nested
-parameter to [`shell`](#shell-default), [`shell.escape`](#escape),
-or [`shell.preserve`](#preserve).
+Flattens, compacts and escapes any parameters which haven't already been
+escaped or preserved, joins the resulting elements with a space, and wraps the
+resulting string in an object which is passed through verbatim when passed as a
+direct or nested parameter to [`shell`](#shell-default),
+[`shell.escape`](#escape), or [`shell.preserve`](#preserve).
 
 #### preserve
 
 **Aliases**: protect, verbatim
 
-**Signature**: ...any → Object
+**Signature**: (...args: any[]) → object
 
 ```javascript
 import shell from 'shell-escape-tag'
 
-let params   = ['foo bar', shell.preserve("baz's quux")]
-let command1 = shell.escape('command', params)
-let command2 = shell`command ${params}`
+const params   = ['foo bar', shell.preserve("baz's quux")]
+const command1 = shell.escape('command', params)
+const command2 = shell`command ${params}`
 
 console.log(command1) // command 'foo bar' baz's quux
 console.log(command2) // command 'foo bar' baz's quux
 ```
 
-Flattens, compacts and preserves any parameters which haven't already
-been escaped or preserved, joins the resulting elements with a space,
-and wraps the resulting string in an object which is passed through
-verbatim when passed as a direct or nested parameter to
-[`shell`](#shell-default), [`shell.escape`](#escape), or
-[`shell.preserve`](#preserve).
+Flattens, compacts and preserves any parameters which haven't already been
+escaped or preserved, joins the resulting elements with a space, and wraps the
+resulting string in an object which is passed through verbatim when passed as a
+direct or nested parameter to [`shell`](#shell-default),
+[`shell.escape`](#escape), or [`shell.preserve`](#preserve).
 
 # DEVELOPMENT
 
@@ -129,31 +130,29 @@ verbatim when passed as a direct or nested parameter to
 
 The following NPM scripts are available:
 
-* test - lint the codebase, compile the library, and run the test suite
-
-## Gulp Tasks
-
-The following Gulp tasks are available:
-
-* build - compile the library and save it to the target directory
-* clean - remove the target directory and its contents
-* default - run the `lint` and `build` tasks
-* dump:config - print the build config settings to the console
-* lint - check and report style and usage errors in the gulpfile, source file(s) and test file(s)
+- build - compile the code and save it to the `dist` directory
+- clean - remove the `dist` directory and other build artifacts
+- rebuild - clean the build artifacts and recompile the code
+- test - clean and rebuild and run the test suite
+- test:run - run the test suite
 
 </details>
 
+# COMPATIBILITY
+
+- [Maintained Node.js versions](https://github.com/nodejs/Release#readme) (and compatible browsers)
+
 # SEE ALSO
 
-* [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
-* [execa](https://www.npmjs.com/package/execa) - A better `child_process`
-* [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
-* [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
-* [@ygor/shell](https://www.npmjs.com/package/@ygor/shell) - A no-frills shell template tag
+- [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
+- [execa](https://www.npmjs.com/package/execa) - A better `child_process`
+- [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
+- [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
+- [@ygor/shell](https://www.npmjs.com/package/@ygor/shell) - A no-frills shell template tag
 
 # VERSION
 
-1.2.2
+2.0.0
 
 # AUTHOR
 
@@ -161,7 +160,7 @@ The following Gulp tasks are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2018 by chocolateboy.
+Copyright © 2015-2019 by chocolateboy.
 
-This is free software; you can redistribute it and/or modify it under the
-terms of the [Artistic License 2.0](https://www.opensource.org/licenses/artistic-license-2.0.php).
+This is free software; you can redistribute it and/or modify it under the terms
+of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).

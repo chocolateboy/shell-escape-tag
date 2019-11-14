@@ -1,6 +1,7 @@
 import shellEscape from 'any-shell-escape'
 import INSPECT     from 'inspect-custom-symbol'
-import _           from 'lodash'
+import flatten     from 'just-flatten-it'
+import zip         from 'just-zip-it'
 
 /*
  * wrapper class for already escaped/preserved values.
@@ -33,8 +34,10 @@ class Escaped {
  * then flattens the resulting array and returns its elements joined by a space
  */
 function _shellEscape (params, options = {}) {
-    let escaped = [ __shellEscape(params, options) ]
-    let flattened = _.flattenDeep(escaped)
+    const escaped = [__shellEscape(params, options)]
+    // const flattened = escaped.flat(Infinity) // XXX not supported in Node.js v8
+    const flattened = flatten(escaped)
+
     return flattened.join(' ')
 }
 
@@ -62,7 +65,7 @@ function __shellEscape (params, options) {
 function shell (strings, ...params) {
     let result = ''
 
-    for (let [ string, param ] of _.zip(strings, params)) {
+    for (const [string, param] of zip(strings, params)) {
         result += string + _shellEscape(param)
     }
 
@@ -86,5 +89,4 @@ shell.preserve = function verbatim (...params) {
 
 shell.protect = shell.verbatim = shell.preserve
 
-module.exports = shell
-module.exports.default = module.exports
+export default shell

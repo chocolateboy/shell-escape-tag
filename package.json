@@ -1,59 +1,54 @@
 {
-  "name": "shell-escape-tag",
-  "author": "chocolateboy",
-  "version": "1.2.2",
-  "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
-  "repository": "chocolateboy/shell-escape-tag",
-  "license": "Artistic-2.0",
-  "main": "dist/shell-escape-tag.js",
-  "files": [
-    "dist/shell-escape-tag.js"
-  ],
-  "scripts": {
-    "prepublishOnly": "gulp clean && cross-env NODE_ENV=production npm run test",
-    "test": "gulp && ava --verbose"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.0.0-rc.1",
-    "any-shell-escape": "^0.1.1",
-    "inspect-custom-symbol": "^1.1.0",
-    "lodash": "^4.17.10"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/plugin-transform-runtime": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "ava": "1.0.0-beta.4",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-lodash": "^3.3.4",
-    "babel-plugin-source-map-support": "^2.0.1",
-    "cross-env": "^5.2.0",
-    "del": "^3.0.0",
-    "eslint": "^5.4.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0-beta.2",
-    "gulp-changed": "^3.2.0",
-    "gulp-eslint": "^5.0.0",
-    "source-map-support": "0.5.9"
-  },
-  "keywords": [
-    "es6",
-    "escape",
-    "interpolate",
-    "interpolation",
-    "quote",
-    "shell",
-    "tag",
-    "tags",
-    "tagged",
-    "tagged-template",
-    "tagged-templates",
-    "template",
-    "templates"
-  ]
+    "name": "shell-escape-tag",
+    "author": "chocolateboy",
+    "version": "2.0.0",
+    "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
+    "repository": "chocolateboy/shell-escape-tag",
+    "license": "Artistic-2.0",
+    "main": "dist/shell-escape-tag.js",
+    "module": "dist/shell-escape-tag.esm.js",
+    "files": [
+        "dist/shell-escape-tag.js",
+        "dist/shell-escape-tag.esm.js"
+    ],
+    "scripts": {
+        "build": "bili --format cjs --format esm src/*.js",
+        "clean": "shx rm -rf dist",
+        "rebuild": "run-s clean build",
+        "test:run": "ava --verbose",
+        "test": "run-s rebuild test:run"
+    },
+    "ava": {
+        "files": [
+            "test/*.js"
+        ]
+    },
+    "dependencies": {
+        "any-shell-escape": "^0.1.1",
+        "inspect-custom-symbol": "^1.1.1",
+        "just-flatten-it": "^2.1.0",
+        "just-zip-it": "^2.1.0"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.7.1",
+        "ava": "^2.4.0",
+        "bili": "^4.8.1",
+        "npm-run-all": "^4.1.5",
+        "shx": "^0.3.2"
+    },
+    "keywords": [
+        "es6",
+        "escape",
+        "interpolate",
+        "interpolation",
+        "quote",
+        "shell",
+        "tag",
+        "tags",
+        "tagged",
+        "tagged-template",
+        "tagged-templates",
+        "template",
+        "templates"
+    ]
 }

@@ -1,22 +1,22 @@
-import shell       from '../dist/shell-escape-tag.js'
+import shell       from '..'
 import test        from 'ava'
 import { inspect } from 'util'
 
 test('is aliased to shell.protect', t => {
-    t.true(shell.protect === shell.preserve)
+    t.is(shell.protect, shell.preserve)
 })
 
 test('is aliased to shell.verbatim', t => {
-    t.true(shell.verbatim === shell.preserve)
+    t.is(shell.verbatim, shell.preserve)
 })
 
 test('stringifies to the unescaped string', t => {
-    t.true(shell.preserve('Foo Bar').toString() === 'Foo Bar')
-    t.true(inspect(shell.preserve('Foo Bar')) === 'Foo Bar')
+    t.is(shell.preserve('Foo Bar').toString(), 'Foo Bar')
+    t.is(inspect(shell.preserve('Foo Bar')), 'Foo Bar')
 })
 
 test('preserves a string with spaces', t => {
-    t.true(shell.preserve('Foo Bar').value === 'Foo Bar')
+    t.is(shell.preserve('Foo Bar').value, 'Foo Bar')
 })
 
 test('preserves an array of strings with spaces', t => {
@@ -41,8 +41,8 @@ test('preserves an array of strings with quotes', t => {
 })
 
 test('ignores null and undefined', t => {
-    t.true(shell.preserve(null).value === '')
-    t.true(shell.preserve(undefined).value === '')
+    t.is(shell.preserve(null).value, '')
+    t.is(shell.preserve(undefined).value, '')
 })
 
 test('ignores null and undefined array values', t => {
@@ -58,9 +58,9 @@ test('ignores null and undefined array values', t => {
 })
 
 test('stringifies defined values', t => {
-    t.true(shell.preserve('').value === '')
-    t.true(shell.preserve(false).value === 'false')
-    t.true(shell.preserve(42).value === '42')
+    t.is(shell.preserve('').value, '')
+    t.is(shell.preserve(false).value, 'false')
+    t.is(shell.preserve(42).value, '42')
 })
 
 test('stringifies defined array values', t => {
@@ -93,12 +93,12 @@ test('flattens nested array values', t => {
 
 test('preserves embedded strings', t => {
     const verbatim = shell.preserve('Foo Bar')
-    t.true(shell`foo ${verbatim}` === 'foo Foo Bar')
+    t.is(shell`foo ${verbatim}`, 'foo Foo Bar')
 })
 
 test('preserves embedded arrays', t => {
     const verbatim = shell.preserve([ 'Foo Bar', 'Baz Quux' ])
-    t.true(shell`foo ${verbatim}` === 'foo Foo Bar Baz Quux')
+    t.is(shell`foo ${verbatim}`, 'foo Foo Bar Baz Quux')
 })
 
 test('preserves embedded nested strings/arrays', t => {

@@ -1,3 +1,13 @@
+## 2.0.0 - TBD
+
+- **Breaking changes**
+  - remove the `require("shell-escape-tag").default` shim
+    (just use `require("shell-escape-tag")` (or `import`))
+- bump the minimum compatibility level to
+  [maintained Node.js versions](https://github.com/nodejs/Release#readme)
+  (and compatible browsers)
+- update dependencies
+
 ## 1.2.2 - 2018-08-21
 
 - doc tweaks

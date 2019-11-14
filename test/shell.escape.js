@@ -1,14 +1,14 @@
-import shell       from '../dist/shell-escape-tag.js'
+import shell       from '..'
 import test        from 'ava'
 import { inspect } from 'util'
 
 test('stringifies to the escaped string', t => {
-    t.true(shell.escape('Foo Bar').toString() === "'Foo Bar'")
-    t.true(inspect(shell.escape('Foo Bar')) === "'Foo Bar'")
+    t.is(shell.escape('Foo Bar').toString(), "'Foo Bar'")
+    t.is(inspect(shell.escape('Foo Bar')), "'Foo Bar'")
 })
 
 test('escapes a string with spaces', t => {
-    t.true(shell.escape('Foo Bar').value === "'Foo Bar'")
+    t.is(shell.escape('Foo Bar').value, "'Foo Bar'")
 })
 
 test('escapes an array of strings with spaces', t => {
@@ -33,8 +33,8 @@ test('escapes an array of strings with quotes', t => {
 })
 
 test('ignores null and undefined', t => {
-    t.true(shell.escape(null).value === '')
-    t.true(shell.escape(undefined).value === '')
+    t.is(shell.escape(null).value, '')
+    t.is(shell.escape(undefined).value, '')
 })
 
 test('ignores null and undefined array values', t => {
@@ -50,9 +50,9 @@ test('ignores null and undefined array values', t => {
 })
 
 test('stringifies defined values', t => {
-    t.true(shell.escape('').value === '')
-    t.true(shell.escape(false).value === 'false')
-    t.true(shell.escape(42).value === '42')
+    t.is(shell.escape('').value, '')
+    t.is(shell.escape(false).value, 'false')
+    t.is(shell.escape(42).value, '42')
 })
 
 test('stringifies defined array values', t => {
@@ -85,12 +85,12 @@ test('flattens nested array values', t => {
 
 test("doesn't escape embedded escaped strings", t => {
     const escaped = shell.escape('Foo Bar')
-    t.true(shell`foo ${escaped}` === "foo 'Foo Bar'")
+    t.is(shell`foo ${escaped}`, "foo 'Foo Bar'")
 })
 
 test("doesn't escape embedded escaped arrays", t => {
     const escaped = shell.escape([ 'Foo Bar', 'Baz Quux' ])
-    t.true(shell`foo ${escaped}` === "foo 'Foo Bar' 'Baz Quux'")
+    t.is(shell`foo ${escaped}`, "foo 'Foo Bar' 'Baz Quux'")
 })
 
 test("doesn't escape embedded nested strings/arrays", t => {
