@@ -1,6 +1,6 @@
-## 2.0.0 - TBD
+## 2.0.0 - 2019-11-15
 
-- **Breaking changes**
+- **Breaking change**:
   - remove the `require("shell-escape-tag").default` shim
     (just use `require("shell-escape-tag")` (or `import`))
 - bump the minimum compatibility level to

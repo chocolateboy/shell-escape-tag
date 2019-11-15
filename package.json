@@ -5,11 +5,11 @@
     "description": "An ES6 template tag which escapes parameters for interpolation into shell commands",
     "repository": "chocolateboy/shell-escape-tag",
     "license": "Artistic-2.0",
-    "main": "dist/shell-escape-tag.js",
-    "module": "dist/shell-escape-tag.esm.js",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
     "files": [
-        "dist/shell-escape-tag.js",
-        "dist/shell-escape-tag.esm.js"
+        "dist/index.js",
+        "dist/index.esm.js"
     ],
     "scripts": {
         "build": "bili --format cjs --format esm src/*.js",
