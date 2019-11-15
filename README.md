@@ -34,9 +34,9 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 ```javascript
 import shell from 'shell-escape-tag'
 
-const filenames = glob('Holiday Snaps/*.jpg')
-const title     = 'Holiday Snaps'
-const command   = shell`compress --title ${title} ${filenames}`
+let filenames = glob('Holiday Snaps/*.jpg')
+let title     = 'Holiday Snaps'
+let command   = shell`compress --title ${title} ${filenames}`
 
 console.log(command) // compress --title 'Holiday Snaps' 'Holiday Snaps/Pic 1.jpg' 'Holiday Snaps/Pic 2.jpg'
 ```
@@ -61,9 +61,9 @@ from further processing.
 ```javascript
 import shell from 'shell-escape-tag'
 
-const filenames = ['foo bar', "baz's quux"]
-const title     = 'My Title'
-const command   = shell`command --title ${title} ${filenames}`
+let filenames = ['foo bar', "baz's quux"]
+let title     = 'My Title'
+let command   = shell`command --title ${title} ${filenames}`
 
 console.log(command) // command --title 'My Title' 'foo bar' 'baz'"'"'s quux'
 ```
@@ -84,9 +84,9 @@ preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 ```javascript
 import shell from 'shell-escape-tag'
 
-const params   = ['foo bar', "baz's quux"]
-const command1 = shell.escape('command', params)
-const command2 = shell`command ${params}`
+let params   = ['foo bar', "baz's quux"]
+let command1 = shell.escape('command', params)
+let command2 = shell`command ${params}`
 
 console.log(command1) // command 'foo bar' 'baz'"'"'s quux'
 console.log(command2) // command 'foo bar' 'baz'"'"'s quux'
@@ -107,9 +107,9 @@ direct or nested parameter to [`shell`](#shell-default),
 ```javascript
 import shell from 'shell-escape-tag'
 
-const params   = ['foo bar', shell.preserve("baz's quux")]
-const command1 = shell.escape('command', params)
-const command2 = shell`command ${params}`
+let params   = ['foo bar', shell.preserve("baz's quux")]
+let command1 = shell.escape('command', params)
+let command2 = shell`command ${params}`
 
 console.log(command1) // command 'foo bar' baz's quux
 console.log(command2) // command 'foo bar' baz's quux
