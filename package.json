@@ -14,6 +14,7 @@
     "scripts": {
         "build": "bili --format cjs --format esm src/*.js",
         "clean": "shx rm -rf dist",
+        "prepack": "cross-env NODE_ENV=production run-s test",
         "rebuild": "run-s clean build",
         "test:run": "ava --verbose",
         "test": "run-s rebuild test:run"
@@ -33,6 +34,7 @@
         "@babel/preset-env": "^7.7.1",
         "ava": "^2.4.0",
         "bili": "^4.8.1",
+        "cross-env": "^6.0.3",
         "npm-run-all": "^4.1.5",
         "shx": "^0.3.2"
     },
