@@ -151,7 +151,7 @@ The following NPM scripts are available:
 
 # VERSION
 
-2.0.0
+2.0.1
 
 # AUTHOR
 
