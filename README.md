@@ -17,7 +17,6 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
       - [preserve](#preserve)
 - [DEVELOPMENT](#development)
   - [NPM Scripts](#npm-scripts)
-  - [Gulp Tasks](#gulp-tasks)
 - [COMPATIBILITY](#compatibility)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
