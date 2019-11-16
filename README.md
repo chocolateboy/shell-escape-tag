@@ -84,18 +84,18 @@ preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 ```javascript
 import shell from 'shell-escape-tag'
 
-let params   = ['foo bar', "baz's quux"]
-let command1 = shell.escape('command', params)
-let command2 = shell`command ${params}`
+let escaped = shell.escape("foo's bar")
+let command1 = `command ${escaped}`
+let command2 = shell`command ${escaped}`
 
-console.log(command1) // command 'foo bar' 'baz'"'"'s quux'
-console.log(command2) // command 'foo bar' 'baz'"'"'s quux'
+console.log(command1) // command 'foo'"'"'s bar'
+console.log(command2) // command 'foo'"'"'s bar'
 ```
 
 Flattens, compacts and escapes any parameters which haven't already been
 escaped or preserved, joins the resulting elements with a space, and wraps the
-resulting string in an object which is passed through verbatim when passed as a
-direct or nested parameter to [`shell`](#shell-default),
+resulting string in an object which remains escaped when embedded in a template
+or passed as a direct or nested parameter to [`shell`](#shell-default),
 [`shell.escape`](#escape), or [`shell.preserve`](#preserve).
 
 #### preserve
@@ -107,19 +107,20 @@ direct or nested parameter to [`shell`](#shell-default),
 ```javascript
 import shell from 'shell-escape-tag'
 
-let params   = ['foo bar', shell.preserve("baz's quux")]
-let command1 = shell.escape('command', params)
-let command2 = shell`command ${params}`
+let preserved = shell.preserve("baz's quux")
+let command1 = `command "${preserved}"`
+let command2 = shell`command "${preserved}"`
 
-console.log(command1) // command 'foo bar' baz's quux
-console.log(command2) // command 'foo bar' baz's quux
+console.log(command1) // command "baz's quux"
+console.log(command2) // command "baz's quux"
 ```
 
 Flattens, compacts and preserves any parameters which haven't already been
 escaped or preserved, joins the resulting elements with a space, and wraps the
-resulting string in an object which is passed through verbatim when passed as a
-direct or nested parameter to [`shell`](#shell-default),
-[`shell.escape`](#escape), or [`shell.preserve`](#preserve).
+resulting string in an object which is passed through verbatim when embedded in
+a template or passed as a direct or nested parameter to
+[`shell`](#shell-default), [`shell.escape`](#escape), or
+[`shell.preserve`](#preserve).
 
 # DEVELOPMENT
 
@@ -147,7 +148,6 @@ The following NPM scripts are available:
 - [execa](https://www.npmjs.com/package/execa) - A better `child_process`
 - [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
 - [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
-- [@ygor/shell](https://www.npmjs.com/package/@ygor/shell) - A no-frills shell template tag
 
 # VERSION
 

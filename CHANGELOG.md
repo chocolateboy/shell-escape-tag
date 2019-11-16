@@ -1,3 +1,7 @@
+## 2.0.2 - TBD
+
+- doc tweaks
+
 ## 2.0.1 - 2019-11-15
 
 - remove unused dependency
