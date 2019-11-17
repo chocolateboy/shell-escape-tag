@@ -12,9 +12,9 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 - [DESCRIPTION](#description)
 - [EXPORTS](#exports)
   - [shell (default)](#shell-default)
-    - [Functions](#functions)
-      - [escape](#escape)
-      - [preserve](#preserve)
+- [FUNCTIONS](#functions)
+  - [shell.escape](#shellescape)
+  - [shell.preserve](#shellpreserve)
 - [DEVELOPMENT](#development)
   - [NPM Scripts](#npm-scripts)
 - [COMPATIBILITY](#compatibility)
@@ -75,9 +75,9 @@ space. All other values are stringified i.e. `false` is mapped to `"false"`
 etc. Parameters that have been escaped with [`shell.escape`](#escape) or
 preserved with [`shell.preserve`](#preserve) are passed through verbatim.
 
-### Functions
+# FUNCTIONS
 
-#### escape
+## shell.escape
 
 **Signature**: (...args: any[]) ⇒ object
 
@@ -98,7 +98,7 @@ resulting string in an object which remains escaped when embedded in a template
 or passed as a direct or nested parameter to [`shell`](#shell-default),
 [`shell.escape`](#escape), or [`shell.preserve`](#preserve).
 
-#### preserve
+## shell.preserve
 
 **Aliases**: protect, verbatim
 
