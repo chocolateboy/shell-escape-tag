@@ -49,7 +49,7 @@ arrays of strings, or nested arrays of strings, arrays and already-processed
 parameters.
 
 The exported function also provides two helper functions which respectively
-[escape](#escape) and [preserve](#preserve) their parameters and protect them
+[escape](#shellescape) and [preserve](#shellpreserve) their parameters and protect them
 from further processing.
 
 # EXPORTS
@@ -72,8 +72,8 @@ Takes a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScri
 and escapes any interpolated parameters. `null` and `undefined` values are
 ignored. Arrays are flattened and their elements are escaped and joined with a
 space. All other values are stringified i.e. `false` is mapped to `"false"`
-etc. Parameters that have been escaped with [`shell.escape`](#escape) or
-preserved with [`shell.preserve`](#preserve) are passed through verbatim.
+etc. Parameters that have been escaped with [`shell.escape`](#shellescape) or
+preserved with [`shell.preserve`](#shellpreserve) are passed through verbatim.
 
 # FUNCTIONS
 
@@ -96,7 +96,7 @@ Flattens, compacts and escapes any parameters which haven't already been
 escaped or preserved, joins the resulting elements with a space, and wraps the
 resulting string in an object which remains escaped when embedded in a template
 or passed as a direct or nested parameter to [`shell`](#shell-default),
-[`shell.escape`](#escape), or [`shell.preserve`](#preserve).
+[`shell.escape`](#shellescape), or [`shell.preserve`](#shellpreserve).
 
 ## shell.preserve
 
@@ -119,8 +119,8 @@ Flattens, compacts and preserves any parameters which haven't already been
 escaped or preserved, joins the resulting elements with a space, and wraps the
 resulting string in an object which is passed through verbatim when embedded in
 a template or passed as a direct or nested parameter to
-[`shell`](#shell-default), [`shell.escape`](#escape), or
-[`shell.preserve`](#preserve).
+[`shell`](#shell-default), [`shell.escape`](#shellescape), or
+[`shell.preserve`](#shellpreserve).
 
 # DEVELOPMENT
 
