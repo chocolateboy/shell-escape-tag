@@ -1,5 +1,6 @@
 ## 2.0.2 - 2019-11-17
 
+- add tests for the examples in the README
 - doc tweaks
 
 ## 2.0.1 - 2019-11-15

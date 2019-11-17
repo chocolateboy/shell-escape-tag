@@ -33,7 +33,7 @@ class Escaped {
  *
  * then flattens the resulting array and returns its elements joined by a space
  */
-function _shellEscape (params, options = {}) {
+function shellQuote (params, options = {}) {
     const escaped = [traverse(params, options)]
     // const flattened = escaped.flat(Infinity) // XXX not supported in Node.js v8
     const flattened = flatten(escaped)
@@ -42,7 +42,7 @@ function _shellEscape (params, options = {}) {
 }
 
 /*
- * the (recursive) guts of `_shellEscape`. returns a leaf node (string) or a
+ * the (recursive) guts of `shellQuote`. returns a leaf node (string) or a
  * possibly-empty array of arrays/leaf nodes. prunes null and undefined by
  * returning empty arrays
  */
@@ -66,7 +66,7 @@ function shell (strings, ...params) {
     let result = ''
 
     for (const [string, param] of zip(strings, params)) {
-        result += string + _shellEscape(param)
+        result += string + shellQuote(param)
     }
 
     return result
@@ -77,14 +77,14 @@ function shell (strings, ...params) {
  * re-escaped
  */
 shell.escape = function escape (...params) {
-    return new Escaped(_shellEscape(params, { verbatim: false }))
+    return new Escaped(shellQuote(params, { verbatim: false }))
 }
 
 /*
  * helper function which protects its parameters from being escaped
  */
 shell.preserve = function preserve (...params) {
-    return new Escaped(_shellEscape(params, { verbatim: true }))
+    return new Escaped(shellQuote(params, { verbatim: true }))
 }
 
 shell.protect = shell.verbatim = shell.preserve
