@@ -4,9 +4,9 @@ import flatten     from 'just-flatten-it'
 import zip         from 'just-zip-it'
 
 /*
- * wrapper class for already escaped/preserved values.
- * the `shell` function extracts the escaped/preserved value
- * from instances of this class rather than escaping them again
+ * wrapper class for already escaped/preserved values. the `shell` function
+ * extracts the escaped/preserved value from instances of this class rather than
+ * escaping them again
  */
 class Escaped {
     constructor (value) {
@@ -34,7 +34,7 @@ class Escaped {
  * then flattens the resulting array and returns its elements joined by a space
  */
 function _shellEscape (params, options = {}) {
-    const escaped = [__shellEscape(params, options)]
+    const escaped = [traverse(params, options)]
     // const flattened = escaped.flat(Infinity) // XXX not supported in Node.js v8
     const flattened = flatten(escaped)
 
@@ -42,15 +42,15 @@ function _shellEscape (params, options = {}) {
 }
 
 /*
- * the (recursive) guts of _shellEscape. returns a leaf node (string)
- * or a possibly-empty array of arrays/leaf nodes. prunes
- * null and undefined by returning empty arrays
+ * the (recursive) guts of `_shellEscape`. returns a leaf node (string) or a
+ * possibly-empty array of arrays/leaf nodes. prunes null and undefined by
+ * returning empty arrays
  */
-function __shellEscape (params, options) {
+function traverse (params, options) {
     if (params instanceof Escaped) {
         return params.value
     } else if (Array.isArray(params)) {
-        return params.map(param => __shellEscape(param, options))
+        return params.map(param => traverse(param, options))
     } else if (params == null) {
         return []
     } else {
@@ -59,8 +59,8 @@ function __shellEscape (params, options) {
 }
 
 /*
- * escapes embedded string/array template parameters and passes
- * through already escaped/preserved parameters verbatim
+ * escapes embedded string/array template parameters and passes through already
+ * escaped/preserved parameters verbatim
  */
 function shell (strings, ...params) {
     let result = ''
@@ -73,8 +73,8 @@ function shell (strings, ...params) {
 }
 
 /*
- * helper function which escapes its parameters and prevents them
- * from being re-escaped
+ * helper function which escapes its parameters and prevents them from being
+ * re-escaped
  */
 shell.escape = function escape (...params) {
     return new Escaped(_shellEscape(params, { verbatim: false }))
@@ -83,7 +83,7 @@ shell.escape = function escape (...params) {
 /*
  * helper function which protects its parameters from being escaped
  */
-shell.preserve = function verbatim (...params) {
+shell.preserve = function preserve (...params) {
     return new Escaped(_shellEscape(params, { verbatim: true }))
 }
 
