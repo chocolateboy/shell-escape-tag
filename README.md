@@ -56,7 +56,7 @@ from further processing.
 
 ## shell (default)
 
-**Signature**: (template: string) ⇒ string
+**Signature**: (template: string) → string
 
 ```javascript
 import shell from 'shell-escape-tag'
@@ -79,7 +79,7 @@ preserved with [`shell.preserve`](#shellpreserve) are passed through verbatim.
 
 ## shell.escape
 
-**Signature**: (...args: any[]) ⇒ object
+**Signature**: (...args: any[]) → object
 
 ```javascript
 import shell from 'shell-escape-tag'
