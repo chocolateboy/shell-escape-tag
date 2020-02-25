@@ -1,5 +1,5 @@
-import shell from '..'
-import test  from 'ava'
+const test  = require('ava')
+const shell = require('..')
 
 // XXX results assume these tests are running on non-Windows
 

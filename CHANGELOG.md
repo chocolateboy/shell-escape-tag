@@ -1,3 +1,27 @@
+## 3.0.0 - TBD
+
+- fix [#GH-12](https://github.com/chocolateboy/shell-escape-tag/issues/12) - thanks, Ada Cohen
+
+    Correctly quote empty strings on Unix (shell). This is a bug fix rather than a
+    breaking change, but released as a new major version in case anyone was relying
+    on the broken behavior, which has been there since the start.
+
+    ### before
+
+    ```javascript
+    const pattern = ''
+    shell`echo foo | grep ${pattern}` // => echo foo | grep
+    ```
+
+    ### after
+
+    ```javascript
+    const pattern = ''
+    shell`echo foo | grep ${pattern}` // => echo foo | grep ''
+    ```
+
+- update dependencies
+
 ## 2.0.2 - 2019-11-17
 
 - add tests for the examples in the README

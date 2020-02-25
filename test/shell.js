@@ -1,8 +1,14 @@
-import shell from '..'
-import test  from 'ava'
+const test  = require('ava')
+const shell = require('..')
 
-test('escapes an empty string', t => {
+test('preserves strings with no interpolation', t => {
     t.is(shell``, '')
+    t.is(shell` `, ' ')
+    t.is(shell`\t`, '\t')
+    t.is(shell`\n`, '\n')
+    t.is(shell`\r`, '\r')
+    t.is(shell`foo bar`, 'foo bar')
+    t.is(shell`foo's bar`, `foo's bar`)
 })
 
 test('ignores null values', t => {
@@ -14,19 +20,13 @@ test('ignores undefined values', t => {
 })
 
 test('ignores null and undefined values', t => {
-    const bar = [ null, undefined, 'bar', undefined, null ]
+    const bar = [null, undefined, 'bar', undefined, null]
     t.is(shell`foo${bar}baz`, 'foobarbaz')
 })
 
 test('does not ignore empty strings', t => {
-    const bar = [ '', 'bar', '' ]
-    t.is(shell`foo${bar}baz`, 'foo bar baz')
-})
-
-test('escapes a string with no interpolations', t => {
-    t.is(shell`foo`, 'foo')
-    t.is(shell`foo bar`, 'foo bar')
-    t.is(shell`foo bar baz`, 'foo bar baz')
+    const bar = ['', 'bar', '']
+    t.is(shell`foo ${bar} baz`, "foo '' bar '' baz")
 })
 
 test('escapes a string which only contains an interpolation', t => {
@@ -80,7 +80,7 @@ test('escapes a string with spaces', t => {
 })
 
 test('escapes an array of strings with spaces', t => {
-    const foo = [ 'Foo Bar', 'Baz Quux' ]
+    const foo = ['Foo Bar', 'Baz Quux']
     t.is(shell`foo ${foo}`, "foo 'Foo Bar' 'Baz Quux'")
 })
 
@@ -94,7 +94,7 @@ test('escapes a string with quotes', t => {
 })
 
 test('escapes an array of strings with quotes', t => {
-    const foo = [ `Foo's "Bar"`, `Foo 'Bar' "Baz"` ]
+    const foo = [`Foo's "Bar"`, `Foo 'Bar' "Baz"`]
 
     t.is(
         shell`foo ${foo} bar`,

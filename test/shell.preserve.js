@@ -1,6 +1,6 @@
-import shell       from '..'
-import test        from 'ava'
-import { inspect } from 'util'
+const test        = require('ava')
+const { inspect } = require('util')
+const shell       = require('..')
 
 test('is aliased to shell.protect', t => {
     t.is(shell.protect, shell.preserve)
@@ -21,7 +21,7 @@ test('preserves a string with spaces', t => {
 
 test('preserves an array of strings with spaces', t => {
     t.is(
-        shell.preserve([ 'Foo Bar', 'Baz Quux' ]).value,
+        shell.preserve(['Foo Bar', 'Baz Quux']).value,
         'Foo Bar Baz Quux'
     )
 })
@@ -35,7 +35,7 @@ test('preserves a string with quotes', t => {
 
 test('preserves an array of strings with quotes', t => {
     t.is(
-        shell.preserve([ `Foo's "Bar"`, `Foo 'Bar' "Baz"` ]).value,
+        shell.preserve([`Foo's "Bar"`, `Foo 'Bar' "Baz"`]).value,
         `Foo's "Bar" Foo 'Bar' "Baz"`
     )
 })
@@ -82,7 +82,7 @@ test('flattens nested array values', t => {
             [ 'Foo Bar',
                 [ 0, '', false,
                     [ null, undefined,
-                        [ 'Baz Quux' ]
+                        ['Baz Quux']
                     ]
                 ]
             ]
@@ -97,7 +97,7 @@ test('preserves embedded strings', t => {
 })
 
 test('preserves embedded arrays', t => {
-    const verbatim = shell.preserve([ 'Foo Bar', 'Baz Quux' ])
+    const verbatim = shell.preserve(['Foo Bar', 'Baz Quux'])
     t.is(shell`foo ${verbatim}`, 'foo Foo Bar Baz Quux')
 })
 
@@ -105,7 +105,7 @@ test('preserves embedded nested strings/arrays', t => {
     const verbatim = shell.preserve([
         '1 2',
         shell.preserve('3 4'),
-        shell.preserve([ '5 6', '7 8' ]),
+        shell.preserve(['5 6', '7 8']),
         '9 10'
     ])
 
@@ -116,7 +116,7 @@ test('preserves embedded nested strings/arrays', t => {
 })
 
 test('supports embedded escapes', t => {
-    const param = shell.preserve(shell.escape('foo bar'), [ "baz's quux" ])
+    const param = shell.preserve(shell.escape('foo bar'), ["baz's quux"])
 
     t.is(
         shell`command ${param}`,
