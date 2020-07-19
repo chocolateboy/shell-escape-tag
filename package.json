@@ -9,10 +9,10 @@
     "module": "dist/index.esm.js",
     "scripts": {
         "build": "bili --quiet --map --format cjs -d dist src/index.js",
+        "build:doc": "toc-md --max-depth 3 README.md",
         "build:prod": "cross-env NODE_ENV=production bili --format cjs --format esm -d dist src/index.js",
         "clean": "shx rm -rf dist",
-        "doctoc": "markdown-toc --bullets=- -i README.md",
-        "prepublishOnly": "run-s clean build:prod test:unit",
+        "prepublishOnly": "run-s clean build:prod build:doc test:unit",
         "rebuild": "run-s clean build",
         "repl": "node -r ./dev/repl.js",
         "test": "run-s build test:unit",
@@ -22,6 +22,7 @@
         "dist/index.esm.js",
         "dist/index.js"
     ],
+    "browserslist": "maintained node versions",
     "dependencies": {
         "any-shell-escape": "chocolateboy/any-shell-escape#quote-empty-strings",
         "inspect-custom-symbol": "^1.1.1",
@@ -29,12 +30,12 @@
         "just-zip-it": "^2.1.0"
     },
     "devDependencies": {
-        "@babel/preset-env": "^7.8.4",
-        "ava": "^3.4.0",
-        "bili": "^4.8.1",
-        "cross-env": "^7.0.0",
+        "ava": "^3.13.0",
+        "bili": "^5.0.5",
+        "cross-env": "^7.0.2",
         "npm-run-all": "^4.1.5",
-        "shx": "^0.3.2"
+        "shx": "^0.3.2",
+        "toc-md-alt": "^0.4.1"
     },
     "keywords": [
         "es6",

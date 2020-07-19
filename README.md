@@ -7,6 +7,7 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 
 <!-- toc -->
 
+- [NAME](#name)
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
 - [DESCRIPTION](#description)
@@ -16,7 +17,6 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
   - [shell.escape](#shellescape)
   - [shell.preserve](#shellpreserve)
 - [DEVELOPMENT](#development)
-  - [NPM Scripts](#npm-scripts)
 - [COMPATIBILITY](#compatibility)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
@@ -131,6 +131,7 @@ a template or passed as a direct or nested parameter to
 The following NPM scripts are available:
 
 - build - compile the code and save it to the `dist` directory
+- build:doc - generate the README's TOC (table of contents)
 - clean - remove the `dist` directory and other build artifacts
 - rebuild - clean the build artifacts and recompile the code
 - test - clean and rebuild and run the test suite
