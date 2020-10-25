@@ -1,11 +1,7 @@
-# shell-escape-tag
-
 [![Build Status](https://travis-ci.org/chocolateboy/shell-escape-tag.svg)](https://travis-ci.org/chocolateboy/shell-escape-tag)
 [![NPM Version](https://img.shields.io/npm/v/shell-escape-tag.svg)](https://www.npmjs.org/package/shell-escape-tag)
 
-An ES6 template tag which escapes parameters for interpolation into shell commands
-
-<!-- toc -->
+<!-- TOC -->
 
 - [NAME](#name)
 - [INSTALL](#install)
@@ -23,7 +19,11 @@ An ES6 template tag which escapes parameters for interpolation into shell comman
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-<!-- tocstop -->
+<!-- TOC END -->
+
+# NAME
+
+shell-escape-tag - an ES6 template tag which escapes parameters for interpolation into shell commands
 
 # INSTALL
 
@@ -126,6 +126,7 @@ a template or passed as a direct or nested parameter to
 
 <details>
 
+<!-- TOC:ignore -->
 ## NPM Scripts
 
 The following NPM scripts are available:
@@ -145,10 +146,11 @@ The following NPM scripts are available:
 
 # SEE ALSO
 
-- [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - Escape and stringify an array of arguments to be executed on the shell
-- [execa](https://www.npmjs.com/package/execa) - A better `child_process`
-- [@perl/qw](https://www.npmjs.com/package/@perl/qw) - A template tag for quoted word literals like Perl's `qw(...)`
-- [@perl/qx](https://www.npmjs.com/package/@perl/qx) - A template tag to run a command and capture its output like Perl's `qx(...)`
+- [any-shell-escape](https://www.npmjs.com/package/any-shell-escape) - escape and stringify an array of arguments to be executed on the shell
+- [execa](https://www.npmjs.com/package/execa) - a better `child_process`
+- [@perl/qw](https://www.npmjs.com/package/@perl/qw) - a template tag for quoted word literals like Perl's `qw(...)`
+- [@perl/qx](https://www.npmjs.com/package/@perl/qx) - a template tag to run a command and capture its output like Perl's `qx(...)`
+- [puka](https://www.npmjs.com/package/puka) - a cross-platform library for safely passing strings through shells
 
 # VERSION
 
