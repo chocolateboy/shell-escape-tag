@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/chocolateboy/shell-escape-tag.svg)](https://travis-ci.org/chocolateboy/shell-escape-tag)
+[![Build Status](https://github.com/chocolateboy/shell-escape-tag/workflows/test/badge.svg)](https://github.com/chocolateboy/shell-escape-tag/actions?query=workflow%3Atest)
 [![NPM Version](https://img.shields.io/npm/v/shell-escape-tag.svg)](https://www.npmjs.org/package/shell-escape-tag)
 
 <!-- TOC -->
